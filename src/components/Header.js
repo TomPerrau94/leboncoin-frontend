@@ -3,7 +3,7 @@ import Logo from "../components/Logo";
 
 const Header = ({ className }) => {
   return (
-    <div className={`${className} container`}>
+    <div className={className}>
       <Logo />
     </div>
   );

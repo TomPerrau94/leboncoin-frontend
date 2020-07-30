@@ -1,29 +1,56 @@
 :root {
   --orange-: #f56b2a;
+  --grey-80: #474747;
+  --grey-60: #8191a0;
+  --grey-40: #cad1d9;
+  --grey-20: #e6ebef;
+  --grey-10: #f4f6f7;
+  --grey-bg: #fafafa;
+  --blue-: #4183d7;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1rem;
   margin: 0;
+  background-color: var(--grey-bg);
 }
 
 * {
   box-sizing: border-box;
 }
 
+button {
+  border: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: white;
+}
+
+.primaryButton {
+  background-color: var(--orange-);
+  padding: 15px 0;
+}
+
+.secondaryButton {
+  background-color: var(--blue-);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 13px 70px;
+}
+
 .container {
-  width: 96vw;
-  max-width: 1200px;
+  width: 90vw;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 header {
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-bottom: 40px;
 }
 
 .header {
@@ -33,4 +60,213 @@ header {
 
 .logo {
   height: 100%;
+}
+
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--grey-80);
+  color: var(--grey-40);
+}
+
+.footer a {
+  color: white;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.footer a:hover {
+  color: var(--grey-40);
+}
+
+.card {
+  background-color: white;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cardRounded {
+  border-radius: 5px;
+}
+
+.offersList {
+  padding: 40px 0;
+}
+
+.offer {
+  display: flex;
+  height: 180px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.offer img {
+  width: 240px;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--grey-40);
+}
+
+.offerInfos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 30px;
+}
+
+.offerTextInfos {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.offerTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.offerPrice {
+  color: var(--orange-);
+  margin-bottom: 1rem;
+}
+
+.offerDateInfos {
+  font-size: 0.9rem;
+}
+
+.offerPage {
+  display: flex;
+}
+
+.offerPageInfos {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin-right: 20px;
+}
+
+.offerPageInfos img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  background-color: var(--grey-40);
+}
+
+.offerPageInfosHead {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.6rem 30px;
+}
+
+.offerPageInfosHeadText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.offerPageInfosHeadTitle {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.offerPageInfosHeadPrice {
+  color: var(--orange-);
+  font-size: 1.1rem;
+}
+
+.offerPageInfosDescrition {
+  margin-top: 1rem;
+}
+
+.offerPageSide {
+  flex: 1 1;
+}
+
+.offerPageCreatorInfos {
+  display: flex;
+  border-radius: 5px 5px 0 0;
+  flex-direction: column;
+  border-bottom: 1px solid var(--grey-20);
+  padding: 28px 22px;
+}
+
+.offerPageCreatorName {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.offerPageCreatorOtherOffers {
+  color: #4183d7;
+  font-weight: 700;
+}
+
+.offerBuy {
+  border-radius: 0 0 5px 5px;
+  padding: 28px 22px;
+}
+
+.offerBuy button {
+  width: 100%;
+}
+
+.searchOffers {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.searchFormLine {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.searchOffers input {
+  background-color: var(--grey-10);
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  border: none;
+}
+
+.searchOffers input::placeholder {
+  color: var(--grey-60);
+  font-size: 1rem;
+}
+
+.topLine {
+  margin-bottom: 1rem;
+}
+
+.topLine input {
+  padding: 13px 20px 13px 50px;
+  min-width: 320px;
+  margin-right: 20px;
+}
+
+.relative {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 13px;
+  left: 20px;
+  color: var(--grey-60);
+}
+
+.bottomLine input {
+  padding: 6px 0px 6px 12px;
+}
+
+.searchFormFiltersPrice input {
+  margin: 0 1rem;
+  width: 80px;
 }
