@@ -61,7 +61,7 @@ const Offers = () => {
           data.offers.map((offer, index) => {
             return (
               <div className="offer card cardRounded" key={index}>
-                <img src={offer.picture.url} alt=""></img>
+                <img src={offer.picture.secure_url} alt=""></img>
                 <div className="offerInfos">
                   <div className="offerTextInfos">
                     <span className="offerTitle">{offer.title}</span>
