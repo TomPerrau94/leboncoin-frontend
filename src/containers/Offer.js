@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Offer = () => {
   const { id } = useParams();
@@ -9,23 +10,21 @@ const Offer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
   // Get data from server
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://leboncoin-api-tom.herokuapp.com/offer/${id}`
-      );
-      setData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  // Load data
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://leboncoin-api-tom.herokuapp.com/offer/${id}`
+        );
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
     fetchData();
     console.log("Data is loaded");
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <span>Data is loading</span>
@@ -40,7 +39,9 @@ const Offer = () => {
                 <span className="offerPageInfosHeadTitle">{data.title}</span>
                 <span className="offerPageInfosHeadPrice">{data.price} €</span>
               </div>
-              <span className="offerPageInfosHeadDate">{data.created}</span>
+              <span className="offerPageInfosHeadDate">
+                {new Date(data.created).toLocaleString()}
+              </span>
             </div>
             <div className="offerPageInfosDescrition">
               <h4>Description</h4>
@@ -58,7 +59,10 @@ const Offer = () => {
               </span>
             </div>
             <div className="offerBuy card">
-              <button className="primaryButton">Acheter</button>
+              <button className="primaryButton">
+                <FontAwesomeIcon icon="shopping-cart" />
+                Acheter
+              </button>
             </div>
           </aside>
         </div>

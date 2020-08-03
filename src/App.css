@@ -22,12 +22,17 @@ body {
   box-sizing: border-box;
 }
 
+#content {
+  min-height: calc(100vh - 91px);
+}
+
 button {
   border: none;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
 }
 
 .primaryButton {
@@ -41,9 +46,22 @@ button {
   padding: 13px 70px;
 }
 
+.tertiaryButton {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid var(--blue-);
+  color: var(--blue-);
+  padding: 13px;
+}
+
 .container {
   width: 90vw;
   max-width: 1000px;
+  margin: 0 auto;
+}
+
+.smallContainer {
+  width: 60vw;
+  max-width: 720px;
   margin: 0 auto;
 }
 
@@ -56,14 +74,47 @@ header {
 .header {
   height: 60px;
   padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerLogin .fa-user,
+.fa-sign-out-alt {
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+
+.headerLogin span {
+  cursor: pointer;
+}
+
+.headerLogin a {
+  text-decoration: none;
+}
+
+.headerLogin a:hover,
+.headerLogin span:hover {
+  text-decoration: underline;
+}
+
+.headerLogin a:visited {
+  color: black;
 }
 
 .logo {
   height: 100%;
+  cursor: pointer;
 }
 
 .footer {
-  margin-top: 40px;
+  width: 100%;
   padding: 20px;
   text-align: center;
   background-color: var(--grey-80);
@@ -90,7 +141,7 @@ header {
 }
 
 .offersList {
-  padding: 40px 0;
+  padding-bottom: 40px;
 }
 
 .offer {
@@ -98,6 +149,10 @@ header {
   height: 180px;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.offer:last-child {
+  margin-bottom: 0;
 }
 
 .offer img {
@@ -209,6 +264,10 @@ header {
   padding: 28px 22px;
 }
 
+.offerBuy .shoppingCart {
+  margin-right: 5px;
+}
+
 .offerBuy button {
   width: 100%;
 }
@@ -218,7 +277,7 @@ header {
   border-radius: 5px;
   padding: 20px;
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
   display: flex;
   justify-content: center;
 }
@@ -269,4 +328,148 @@ header {
 .searchFormFiltersPrice input {
   margin: 0 1rem;
   width: 80px;
+}
+
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginFormContainer,
+.loginPageLink {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 80px;
+}
+
+.loginFormContainer {
+  border-bottom: 1px solid var(--grey-20);
+}
+
+.formHead {
+  border-bottom: 3px solid var(--orange-);
+  width: 100%;
+  text-align: center;
+}
+
+.loginFormHead h2 {
+  margin: 0 0 1.5rem 0;
+}
+
+.loginForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.inputLabel {
+  font-weight: 700;
+}
+
+.loginForm input,
+.signupForm input {
+  margin: 15px 0 20px 0;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #d9e0eb;
+  border-radius: 5px;
+}
+
+.loginForm button {
+  margin-top: 1rem;
+}
+
+.loginErrorMessage {
+  color: red;
+}
+
+.loginPageLink button {
+  margin-top: 1rem;
+}
+
+.signupPage {
+  display: flex;
+  padding: 30px 50px;
+}
+
+.signupFormContainer {
+  width: calc(50% - 30px);
+  margin-left: 30px;
+}
+
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.signupFormHalfInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.signupFormPasswordInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.signupFormConfirmPasswordInput {
+  display: flex;
+  flex-direction: column;
+}
+
+.signupFeaturesContainer {
+  width: calc(50% - 30px);
+  margin-right: 30px;
+}
+
+.signupFeature {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+
+.signupFeature:last-child {
+  margin-bottom: 0;
+}
+
+.signupFeaturesTitle {
+  margin-bottom: 3rem;
+}
+
+.signupFeature h3 {
+  margin-top: 0;
+}
+
+.signupFeatureIcon {
+  font-size: 2.5rem;
+  margin-right: 2rem;
+  color: var(--blue-);
+  text-align: center;
+  min-width: 40px;
+}
+
+.signupFormConsent {
+  display: flex;
+  position: relative;
+}
+
+.signupFormConsent input {
+  margin: 0 0.6rem 0 0;
+}
+
+.signupForm button {
+  margin-top: 2rem;
+}
+
+.conditions {
+  padding: 40px;
+}
+
+.conditions h1 {
+  text-align: center;
 }

@@ -2,19 +2,34 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SearchForm from "../components/SearchForm";
+import OffersSearch from "../containers/OffersSearch";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faShoppingCart,
   faSearch,
   faCaretDown,
+  faUser,
+  faSignOutAlt,
+  faClock,
+  faBell,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
-library.add(faShoppingCart, faSearch, faCaretDown);
+library.add(
+  faShoppingCart,
+  faSearch,
+  faCaretDown,
+  faUser,
+  faSignOutAlt,
+  faClock,
+  faBell,
+  faEye
+);
 
 const Offers = () => {
   // Declare states
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
-  const [input, setInput] = useState("");
+  const [search, setSearch] = useState(false);
 
   // Get data from server
   const fetchData = async () => {
@@ -36,23 +51,14 @@ const Offers = () => {
     console.log("Data is loaded");
   }, []);
 
-  // Search function
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   return isLoading ? (
     <span>Data is loading</span>
   ) : (
-    <div>
-      <main className="container">
-        <SearchForm
-          input={input}
-          setInput={setInput}
-          handleSubmit={handleSubmit}
-        />
-        <div className="offersList">
-          {data.offers.map((offer, index) => {
+    <main className="container">
+      <SearchForm setSearch={setSearch} />
+      <div className="offersList">
+        {!search ? (
+          data.offers.map((offer, index) => {
             return (
               <div className="offer card cardRounded" key={index}>
                 <img src={offer.picture.url} alt=""></img>
@@ -65,18 +71,22 @@ const Offers = () => {
                     </span>
                   </div>
                   <div className="offerDateInfos">
-                    <span>{offer.created}</span>
+                    <span>{new Date(offer.created).toLocaleString()}</span>
                   </div>
                 </div>
               </div>
             );
-          })}
-        </div>
-        <div className="pagesNavigation">
-          <Link to="/offer/wifth-count?page=2">Page 2</Link>
-        </div>
-      </main>
-    </div>
+          })
+        ) : (
+          <OffersSearch search={search} />
+        )}
+      </div>
+      <div className="pagesNavigation"></div>
+      {/* boucle 0 à nombre total de pages
+         for (i = 0; i < nb total de pages; i += limit)
+        renvoie un span 
+          */}
+    </main>
   );
 };
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 const Footer = ({
-  className,
   technoLink,
   technoName,
   companyLink,
@@ -10,7 +9,7 @@ const Footer = ({
   authorName,
 }) => {
   return (
-    <div className={className}>
+    <>
       <p>
         Made with{" "}
         <span>
@@ -31,7 +30,7 @@ const Footer = ({
           </a>
         </span>
       </p>
-    </div>
+    </>
   );
 };
 
