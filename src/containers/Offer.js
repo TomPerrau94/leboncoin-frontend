@@ -33,7 +33,7 @@ const Offer = () => {
       <main className="container">
         <div className="offerPage">
           <article className="offerPageInfos">
-            <img src={data.picture.url} alt="" />
+            <img src={data.picture.secure_url} alt="" />
             <div className="offerPageInfosHead card">
               <div className="offerPageInfosHeadText">
                 <span className="offerPageInfosHeadTitle">{data.title}</span>
