@@ -4,8 +4,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Offers from "./containers/Offers";
 import Offer from "./containers/Offer";
+import Publish from "./containers/Publish";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
+// import PublishSuccess from "./containers/PublishSuccess";
 import CGU from "./containers/CGU";
 import CGV from "./containers/CGV";
 import "./App.css";
@@ -30,9 +32,15 @@ function App() {
           </header>
           <main>
             <Switch>
+              <Route path="/offer/publish">
+                <Publish />
+              </Route>
               <Route path="/offer/:id">
                 <Offer />
               </Route>
+              {/* <Route path="/publishSuccess/:offerId/:offerTitle">
+                <PublishSuccess />
+              </Route> */}
               <Route path="/login">
                 <Login setUser={setUser} />
               </Route>

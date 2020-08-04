@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 
-const SearchForm = ({ setSearch }) => {
+const SearchForm = ({ setData }) => {
   const [searchInput, setSearchInput] = useState("");
   const [priceMin, setPriceMin] = useState("");
   const [priceMax, setPriceMax] = useState("");
@@ -50,18 +51,26 @@ const SearchForm = ({ setSearch }) => {
       filters.push(`sort=${sort}`);
     }
 
-    // On déclare une variable query qui sera passée dans l'url de reqûete
-    let query = "";
+    // On déclare une variable search qui sera passée dans l'url de reqûete et qui contiendra les éléments du tableau filters dans une string
+    let search = "";
 
     if (filters.length > 1) {
-      query = filters.join("&");
-      console.log(query);
+      search = filters.join("&");
+      console.log(search);
     } else {
-      query = filters.join();
-      console.log(query);
+      search = filters.join();
+      console.log(search);
     }
 
-    setSearch(query);
+    try {
+      const response = await axios.get(
+        `https://leboncoin-api-tom.herokuapp.com/offer/with-count?${search}`
+      );
+      //   console.log(response.data);
+      setData(response.data);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -104,15 +113,12 @@ const SearchForm = ({ setSearch }) => {
               value={priceMax}
             />
           </div>
-          <div className="searchFormFiltersDate">
-            <input
-              type="text"
-              name="dateInput"
-              placeholder="Tri : les plus récentes"
-              onChange={handleSortChange}
-              value={sort}
-            />
-          </div>
+          <select onChange={handleSortChange} className="searchFormFiltersDate">
+            <option value="date-desc">Les plus récentes</option>
+            <option value="date-asc">Les plus anciennes</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="price-asc">Prix croissant</option>
+          </select>
         </div>
       </div>
     </form>

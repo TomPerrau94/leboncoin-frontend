@@ -27,10 +27,12 @@ const Offer = () => {
   }, [id]);
 
   return isLoading ? (
-    <span>Data is loading</span>
+    <div className="container">
+      <span>Data is loading</span>
+    </div>
   ) : (
     <div>
-      <main className="container">
+      <div className="container">
         <div className="offerPage">
           <article className="offerPageInfos">
             <img src={data.picture.secure_url} alt="" />
@@ -47,7 +49,7 @@ const Offer = () => {
               <h4>Description</h4>
               <p>{data.description}</p>
             </div>
-            <Link to="/">Go back to offers list</Link>
+            <Link to="/">Retourner à la liste d'offres</Link>
           </article>
           <aside className="offerPageSide">
             <div className="offerPageCreatorInfos card ">
@@ -66,7 +68,7 @@ const Offer = () => {
             </div>
           </aside>
         </div>
-      </main>
+      </div>
     </div>
   );
 };

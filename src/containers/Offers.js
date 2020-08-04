@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SearchForm from "../components/SearchForm";
-import OffersSearch from "../containers/OffersSearch";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faShoppingCart,
@@ -13,6 +12,8 @@ import {
   faClock,
   faBell,
   faEye,
+  faPlusSquare,
+  faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   faShoppingCart,
@@ -22,14 +23,15 @@ library.add(
   faSignOutAlt,
   faClock,
   faBell,
-  faEye
+  faEye,
+  faPlusSquare,
+  faCheckCircle
 );
 
 const Offers = () => {
   // Declare states
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
-  const [search, setSearch] = useState(false);
 
   // Get data from server
   const fetchData = async () => {
@@ -52,41 +54,39 @@ const Offers = () => {
   }, []);
 
   return isLoading ? (
-    <span>Data is loading</span>
+    <div className="container">
+      <span>Data is loading</span>
+    </div>
   ) : (
-    <main className="container">
-      <SearchForm setSearch={setSearch} />
+    <div className="container">
+      <SearchForm setData={setData} />
       <div className="offersList">
-        {!search ? (
-          data.offers.map((offer, index) => {
-            return (
-              <div className="offer card cardRounded" key={index}>
-                <img src={offer.picture.secure_url} alt=""></img>
-                <div className="offerInfos">
-                  <div className="offerTextInfos">
-                    <span className="offerTitle">{offer.title}</span>
-                    <span className="offerPrice">{offer.price} €</span>
-                    <span>
-                      <Link to={`/offer/${offer._id}`}>Voir l'annonce</Link>
-                    </span>
-                  </div>
-                  <div className="offerDateInfos">
-                    <span>{new Date(offer.created).toLocaleString()}</span>
-                  </div>
+        {data.offers.map((offer, index) => {
+          return (
+            <div className="offer card cardRounded" key={index}>
+              <img src={offer.picture.secure_url} alt=""></img>
+              <div className="offerInfos">
+                <div className="offerTextInfos">
+                  <span className="offerTitle">{offer.title}</span>
+                  <span className="offerPrice">{offer.price} €</span>
+                  <span>
+                    <Link to={`/offer/${offer._id}`}>Voir l'annonce</Link>
+                  </span>
+                </div>
+                <div className="offerDateInfos">
+                  <span>{new Date(offer.created).toLocaleString()}</span>
                 </div>
               </div>
-            );
-          })
-        ) : (
-          <OffersSearch search={search} />
-        )}
+            </div>
+          );
+        })}
       </div>
       <div className="pagesNavigation"></div>
       {/* boucle 0 à nombre total de pages
          for (i = 0; i < nb total de pages; i += limit)
         renvoie un span 
           */}
-    </main>
+    </div>
   );
 };
 
