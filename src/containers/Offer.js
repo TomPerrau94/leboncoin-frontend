@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Offer = () => {
+  const token = Cookies.get("token");
+  const username = Cookies.get("username");
+  const userId = Cookies.get("userId");
+
   const { id } = useParams();
+  const history = useHistory();
+
   // Declare states
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
@@ -61,7 +67,20 @@ const Offer = () => {
               </span>
             </div>
             <div className="offerBuy card">
-              <button className="primaryButton">
+              <button
+                className="primaryButton"
+                onClick={() => {
+                  if (token) {
+                    history.push("/payment", {
+                      username: username,
+                      userId: userId,
+                      offerId: data._id,
+                    });
+                  } else {
+                    history.push("/login");
+                  }
+                }}
+              >
                 <FontAwesomeIcon icon="shopping-cart" />
                 Acheter
               </button>

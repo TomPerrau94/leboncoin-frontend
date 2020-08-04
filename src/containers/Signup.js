@@ -52,10 +52,26 @@ const Signup = ({ setUser }) => {
         alert("Bienvenue !");
 
         const token = response.data.token;
+        const username = response.data.account.username;
+        const userId = response.data._id;
 
-        Cookies.set("token", token);
+        Cookies.set("token", token, {
+          expires: 7,
+          samesite: "none",
+          secure: true,
+        });
+        Cookies.set("username", username, {
+          expires: 7,
+          samesite: "none",
+          secure: true,
+        });
+        Cookies.set("userId", userId, {
+          expires: 7,
+          samesite: "none",
+          secure: true,
+        });
 
-        setUser({ token: token });
+        setUser({ token: token, username: username, userId: userId });
 
         history.push("/");
       }

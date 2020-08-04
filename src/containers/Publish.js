@@ -51,7 +51,12 @@ const Publish = () => {
       const response = await axios.post(
         "https://leboncoin-api-tom.herokuapp.com/offer/publish",
         formData,
-        { headers: { authorization: "Bearer " + token } }
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       console.log(response.data);
       //   const offerId = response.data._id;

@@ -141,10 +141,13 @@ header {
   align-items: center;
 }
 
-.headerLogin .fa-user,
-.fa-sign-out-alt {
+.headerLogin .fa-user {
   font-size: 24px;
   margin-bottom: 2px;
+}
+
+.headerLogin h4 {
+  margin: 0;
 }
 
 .headerLogin span {
@@ -392,7 +395,8 @@ header {
 
 .loginFormContainer,
 .loginPageLink,
-.publishOffer {
+.publishOffer,
+.offerPayment {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -547,7 +551,7 @@ header {
   padding: 10px 0;
 } */
 
-.dropzoneContainer {
+/* .dropzoneContainer {
   display: "flex";
   flex-direction: "column";
   align-items: "center";
@@ -558,4 +562,31 @@ header {
   color: "#bdbdbd";
   outline: "none";
   transition: "border .24s ease-in-out";
+} */
+
+.offerPayment {
+  text-align: center;
+}
+
+.offerRecap {
+  display: flex;
+  flex-direction: column;
+}
+
+.offerRecap img {
+  width: 400px;
+  height: 300px;
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--grey-40);
+}
+
+.offerPaymentStripeContainer {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.offerPaymentForm button {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
 }

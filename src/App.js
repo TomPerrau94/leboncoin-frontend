@@ -7,7 +7,7 @@ import Offer from "./containers/Offer";
 import Publish from "./containers/Publish";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
-// import PublishSuccess from "./containers/PublishSuccess";
+import Payment from "./containers/Payment";
 import CGU from "./containers/CGU";
 import CGV from "./containers/CGV";
 import "./App.css";
@@ -15,10 +15,12 @@ import "./App.css";
 import Cookies from "js-cookie";
 
 function App() {
-  // Regarder si un token existe en tant que cookie
+  // Regarder si un token et un username existe en tant que cookie
   const token = Cookies.get("token");
+  const username = Cookies.get("username");
+  const userId = Cookies.get("userId");
 
-  const [user, setUser] = useState(token || null);
+  const [user, setUser] = useState({ token, username, userId } || null);
   return (
     <>
       <Router>
@@ -38,14 +40,17 @@ function App() {
               <Route path="/offer/:id">
                 <Offer />
               </Route>
-              {/* <Route path="/publishSuccess/:offerId/:offerTitle">
-                <PublishSuccess />
-              </Route> */}
+              <Route path="/payment">
+                <Payment />
+              </Route>
               <Route path="/login">
                 <Login setUser={setUser} />
               </Route>
               <Route path="/signup">
                 <Signup setUser={setUser} />
+              </Route>
+              <Route path="/cgu">
+                <CGU />
               </Route>
               <Route path="/cgu">
                 <CGU />

@@ -8,7 +8,6 @@ import {
   faSearch,
   faCaretDown,
   faUser,
-  faSignOutAlt,
   faClock,
   faBell,
   faEye,
@@ -20,7 +19,6 @@ library.add(
   faSearch,
   faCaretDown,
   faUser,
-  faSignOutAlt,
   faClock,
   faBell,
   faEye,
@@ -85,6 +83,7 @@ const Offers = () => {
       {/* boucle 0 à nombre total de pages
          for (i = 0; i < nb total de pages; i += limit)
         renvoie un span 
+        pour le numéro de page : (i / limit) + 1
           */}
     </div>
   );

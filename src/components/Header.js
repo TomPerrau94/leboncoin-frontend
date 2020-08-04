@@ -44,11 +44,12 @@ const Header = ({ className, user, setUser }) => {
             </>
           ) : (
             <>
-              <FontAwesomeIcon icon={"sign-out-alt"} />
+              <h4>{user.username}</h4>
               <span
                 onClick={() => {
-                  // On supprime le cookie
+                  // On supprime les cookies
                   Cookies.remove("token");
+                  Cookies.remove("username");
 
                   // On repasse le state de user à null
                   setUser(null);

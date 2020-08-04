@@ -26,14 +26,30 @@ const Login = ({ setUser }) => {
       console.log(response.data);
 
       if (response.data.token) {
-        // On récupère la valeur du token
+        // On récupère la valeur du token et du username
         const token = response.data.token;
+        const username = response.data.account.username;
+        const userId = response.data._id;
 
-        // On sauvegarde le token dans un cookie
-        Cookies.set("token", token);
+        // On sauvegarde le token et le username dans un cookie
+        Cookies.set("token", token, {
+          expires: 7,
+          samesite: "none",
+          secure: true,
+        });
+        Cookies.set("username", username, {
+          expires: 7,
+          samesite: "none",
+          secure: true,
+        });
+        Cookies.set("userId", userId, {
+          expires: 7,
+          samesite: "none",
+          secure: true,
+        });
 
         // On remplace le bouton du header
-        setUser({ token: token });
+        setUser({ token: token, username: username, userId: userId });
 
         // On change le state de loginCheck
         setLoginCheck(true);
