@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 const CheckoutForm = ({ userId, offerId, offerPrice, offerTitle }) => {
-  const token = Cookies.get("token");
+  // const token = Cookies.get("token");
   const stripe = useStripe();
   const elements = useElements();
 
@@ -26,16 +26,11 @@ const CheckoutForm = ({ userId, offerId, offerPrice, offerTitle }) => {
 
     // Une fois le token reçu de l'API Stripe, on l'envoie au serveur via une requête depuis l'API Stripe
     const response = await axios.post(
-      `https://leboncoin-api-tom.herokuapp.com/payment`,
+      "https://leboncoin-api-tom.herokuapp.com/payment",
       {
-        stripeToken,
-        price: offerPrice,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-          "Access-Control-Allow-Origin": "*",
-        },
+        token: stripeToken,
+        title: offerTitle,
+        amount: Number(offerPrice) * 100,
       }
     );
     console.log(response.data);
@@ -48,13 +43,17 @@ const CheckoutForm = ({ userId, offerId, offerPrice, offerTitle }) => {
 
   return !completed ? (
     <form onSubmit={handleSubmit} className="offerPaymentForm">
-      <CardElement />
-      <button type="submit" className="primaryButton">
-        Procéder au paiement
-      </button>
+      <div className="offerPaymentStripeFormContainer">
+        <CardElement />
+        <button type="submit" className="primaryButton">
+          Procéder au paiement
+        </button>
+      </div>
     </form>
   ) : (
-    <span>Paiement effectué</span>
+    <div className="offerPaymentStripeFormContainer">
+      <span>Paiement effectué avec succès !</span>
+    </div>
   );
 };
 

@@ -564,13 +564,12 @@ header {
   transition: "border .24s ease-in-out";
 } */
 
-.offerPayment {
-  text-align: center;
-}
-
 .offerRecap {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
 }
 
 .offerRecap img {
@@ -579,6 +578,11 @@ header {
   object-fit: contain;
   object-position: center;
   background-color: var(--grey-40);
+  margin-bottom: 1rem;
+}
+
+.offerPaymentStripeTitle {
+  font-size: 1.4rem;
 }
 
 .offerPaymentStripeContainer {
@@ -589,4 +593,8 @@ header {
 .offerPaymentForm button {
   margin-top: 1rem;
   padding: 1rem 1.5rem;
+}
+
+.offerPaymentStripeFormContainer {
+  padding-top: 1rem;
 }
